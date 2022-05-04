@@ -16,60 +16,43 @@ public class ProcessContext {
     /**
      * Print log on compile
      */
-    protected Messager messager;
+    private final Messager messager;
 
     /**
      * Provide a tree of abstract syntax to be processed
      */
-    protected JavacTrees trees;
+    private final JavacTrees trees;
 
     /**
      * Encapsulates some methods for creating AST nodes
      */
-    protected TreeMaker treeMaker;
+    private final TreeMaker treeMaker;
 
     /**
      * Provides methods to create identifiers
      */
-    protected Names names;
+    private final Names names;
 
-    public static ProcessContext newInstance() {
-        return new ProcessContext();
+    public ProcessContext(Messager messager, JavacTrees trees, TreeMaker treeMaker, Names names) {
+        this.messager = messager;
+        this.trees = trees;
+        this.treeMaker = treeMaker;
+        this.names = names;
     }
 
-    public Messager messager() {
+    public Messager getMessager() {
         return messager;
     }
 
-    public ProcessContext messager(Messager messager) {
-        this.messager = messager;
-        return this;
-    }
-
-    public JavacTrees trees() {
+    public JavacTrees getTrees() {
         return trees;
     }
 
-    public ProcessContext trees(JavacTrees trees) {
-        this.trees = trees;
-        return this;
-    }
-
-    public TreeMaker treeMaker() {
+    public TreeMaker getTreeMaker() {
         return treeMaker;
     }
 
-    public ProcessContext treeMaker(TreeMaker treeMaker) {
-        this.treeMaker = treeMaker;
-        return this;
-    }
-
-    public Names names() {
+    public Names getNames() {
         return names;
-    }
-
-    public ProcessContext names(Names names) {
-        this.names = names;
-        return this;
     }
 }

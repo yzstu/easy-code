@@ -37,6 +37,8 @@ public abstract class BaseProcessor extends AbstractProcessor {
      */
     protected Names names;
 
+    protected ProcessContext context;
+
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
@@ -45,5 +47,6 @@ public abstract class BaseProcessor extends AbstractProcessor {
         Context context = ((JavacProcessingEnvironment) processingEnv).getContext();
         this.treeMaker = TreeMaker.instance(context);
         this.names = Names.instance(context);
+        this.context = new ProcessContext(messager, trees, treeMaker, names);
     }
 }

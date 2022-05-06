@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>cn.yzstu.easy-code-plugin</id>
+    <name>easy-code</name>
+    <vendor email="admin@yzstu.cn" url="https://blog.yzstu.cn">YZSTU</vendor>
+
+<!--    <description>sad sad as da  sda sdasd asd asdasd<![CDATA[-->
+<!--    Enter short description for your plugin here.<br>-->
+<!--    <em>most HTML tags may be used</em>-->
+<!--    ]]></description>-->
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="HelloWorld" class="cn.yzstu.HelloWorld" text="HelloWorld" description="HelloWorld">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

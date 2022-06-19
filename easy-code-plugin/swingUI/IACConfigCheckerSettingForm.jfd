@@ -1,0 +1,98 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fillx,insets dialog,hidemode 3,align center center"
+					"$columnConstraints": "[fill][241,fill]"
+					"$rowConstraints": "[][][][][]0[]0[]0[][]0[]0[]0[]"
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "text_model_path"
+						"text": "配置模版路径"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "input_model_patl"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "text_config_path"
+						"text": "配置文件路径"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField2"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 1"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "各环境配置路径"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField3"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 2"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "加密配置项正则匹配"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 3"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField4"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 3"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "多个路径使用';'隔开"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 5 2 1,alignx center,growx 0"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "insets dialog,alignx right"
+						"$columnConstraints": "[fill][center]"
+						"$rowSpecs": "[fill]"
+					} ) {
+						name: "operate"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "okButton"
+							"text": "OK"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0,alignx center,growx 0"
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "cancelButton"
+							"text": "Cancel"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 1 0,alignx center,growx 0"
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 8 2 1"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 5, 0 )
+			"size": new java.awt.Dimension( 460, 300 )
+		} )
+	}
+}

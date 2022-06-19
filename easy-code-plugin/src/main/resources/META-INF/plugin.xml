@@ -17,6 +17,11 @@
     </extensions>
 
     <actions>
+        <group id="AudioTool" text="AudioTool">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="IACConfigSetting" class="cn.yzstu.configchecker.action.IACConfigSettingAction"
+                    text="IAC-ConfigChecker"/>
+        </group>
         <!-- Add your actions here -->
         <action id="HelloWorld" class="cn.yzstu.HelloWorld" text="HelloWorld" description="HelloWorld">
             <add-to-group group-id="GenerateGroup" anchor="last"/>

@@ -1,9 +1,19 @@
 package cn.yzstu.configchecker.ui;
 
+import cn.yzstu.configchecker.factory.SettingKey;
+import cn.yzstu.configchecker.util.ConfigUtil;
+import cn.yzstu.configchecker.util.NotificationUtil;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 /*
  * Created by JFormDesigner on Thu Jun 16 23:17:23 CST 2022
  */
@@ -13,8 +23,27 @@ import java.awt.*;
  * @author unknown
  */
 public class IACConfigCheckerSettingForm extends JFrame {
+    private JPanel dialogPane;
+    private JPanel contentPanel;
+    private JLabel text_model_path;
+    private JTextField input_model_patl;
+    private JLabel text_config_path;
+    private JTextField input_config_path;
+    private JLabel text_env_config;
+    private JTextField input_env_config;
+    private JLabel text_enc_path;
+    private JTextField input_enc_path;
+    private JLabel text_notify;
+    private JPanel operate;
+    private JButton okButton;
+    private JButton cancelButton;
+
     public IACConfigCheckerSettingForm() {
         initComponents();
+    }
+
+    public JPanel getDialogPane() {
+        return dialogPane;
     }
 
     private void initComponents() {
@@ -41,17 +70,17 @@ public class IACConfigCheckerSettingForm extends JFrame {
 
         //======== dialogPane ========
         {
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-                    javax.swing.border.EmptyBorder(0, 0, 0, 0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
-                    .swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new Font("D\u0069alog", Font.BOLD, 12), Color.red), dialogPane.getBorder()));
-            dialogPane.addPropertyChangeListener(new java.beans.
-                    PropertyChangeListener() {
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent e) {
-                    if ("\u0062order".
-                            equals(e.getPropertyName())) {
-                        throw new RuntimeException();
-                    }
+            dialogPane.setBorder(
+                    new CompoundBorder(
+                            new TitledBorder(
+                                    new EmptyBorder(0, 0, 0, 0),
+                                    "JF\u006frmDes\u0069gner \u0045valua\u0074ion",
+                                    TitledBorder.CENTER, TitledBorder.BOTTOM,
+                                    new Font("D\u0069alog", Font.BOLD, 12), Color.red),
+                            dialogPane.getBorder()));
+            dialogPane.addPropertyChangeListener(e -> {
+                if ("\u0062order".equals(e.getPropertyName())) {
+                    //throw new RuntimeException();
                 }
             });
             dialogPane.setLayout(new BorderLayout());
@@ -60,10 +89,8 @@ public class IACConfigCheckerSettingForm extends JFrame {
             {
                 contentPanel.setLayout(new MigLayout(
                         "fillx,insets dialog,hidemode 3,align center center",
-                        // columns
                         "[fill]" +
                                 "[241,fill]",
-                        // rows
                         "[]" +
                                 "[]" +
                                 "[]" +
@@ -109,7 +136,11 @@ public class IACConfigCheckerSettingForm extends JFrame {
                     //---- okButton ----
                     okButton.setText("OK");
                     operate.add(okButton, "cell 0 0,alignx center,growx 0");
-
+                    okButton.addActionListener(e -> {
+                        String text = input_config_path.getText();
+                        ConfigUtil.save(SettingKey.SETTING_CONFIG_KEY, text);
+                        NotificationUtil.info(text);
+                    });
                     //---- cancelButton ----
                     cancelButton.setText("Cancel");
                     operate.add(cancelButton, "cell 1 0,alignx center,growx 0");
@@ -121,24 +152,5 @@ public class IACConfigCheckerSettingForm extends JFrame {
         contentPane.add(dialogPane, BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
-    private JPanel dialogPane;
-    private JPanel contentPanel;
-    private JLabel text_model_path;
-    private JTextField input_model_patl;
-    private JLabel text_config_path;
-    private JTextField input_config_path;
-    private JLabel text_env_config;
-    private JTextField input_env_config;
-    private JLabel text_enc_path;
-    private JTextField input_enc_path;
-    private JLabel text_notify;
-    private JPanel operate;
-    private JButton okButton;
-    private JButton cancelButton;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -14,6 +14,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <notificationGroup displayType="BALLOON" id="audio.notify" isLogByDefault="false"/>
+        <projectConfigurable groupId="tools" displayName="AudioTools" id="audio.tools"
+                             instance="cn.yzstu.configchecker.factory.SettingFactory"/>
     </extensions>
 
     <actions>

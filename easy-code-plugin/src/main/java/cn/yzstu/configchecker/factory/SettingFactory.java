@@ -26,7 +26,7 @@ public class SettingFactory implements SearchableConfigurable {
 
     @Override
     public @Nullable JComponent createComponent() {
-        return new IACConfigCheckerSettingForm();
+        return new IACConfigCheckerSettingForm().getDialogPane();
     }
 
     @Override

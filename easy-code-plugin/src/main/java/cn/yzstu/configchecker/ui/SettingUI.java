@@ -1,8 +1,11 @@
 package cn.yzstu.configchecker.ui;
 
+import com.intellij.ui.JBColor;
+import com.intellij.util.ui.JBUI;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 /**
@@ -53,13 +56,11 @@ public class SettingUI extends JFrame  {
     }
 
     private void dialogPane() {
-        dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-                javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax
-                . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-                .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
-                . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans.
-                PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
-                equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(JBUI.Borders.empty(), "JF\u006frmDes\u0069gner \u0045valua\u0074ion", TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new Font("D\u0069alog", Font.BOLD, 12), JBColor.RED), dialogPane.getBorder()));
+        dialogPane.addPropertyChangeListener(e -> {
+            if ("\u0062order".
+                    equals(e.getPropertyName())) throw new RuntimeException();
+        });
         dialogPane.setLayout(new BorderLayout());
 
         //======== contentPanel ========

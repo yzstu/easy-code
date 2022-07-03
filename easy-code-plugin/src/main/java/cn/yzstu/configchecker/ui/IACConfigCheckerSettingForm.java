@@ -1,19 +1,15 @@
 package cn.yzstu.configchecker.ui;
 
-import cn.yzstu.configchecker.factory.SettingKey;
-import cn.yzstu.configchecker.util.ConfigUtil;
-import cn.yzstu.configchecker.util.NotificationUtil;
+import cn.yzstu.configchecker.util.MessageUtil;
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.ui.JBColor;
+import com.intellij.util.ui.JBUI;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 /*
  * Created by JFormDesigner on Thu Jun 16 23:17:23 CST 2022
  */
@@ -73,10 +69,10 @@ public class IACConfigCheckerSettingForm extends JFrame {
             dialogPane.setBorder(
                     new CompoundBorder(
                             new TitledBorder(
-                                    new EmptyBorder(0, 0, 0, 0),
+                                    JBUI.Borders.empty(),
                                     "JF\u006frmDes\u0069gner \u0045valua\u0074ion",
                                     TitledBorder.CENTER, TitledBorder.BOTTOM,
-                                    new Font("D\u0069alog", Font.BOLD, 12), Color.red),
+                                    new Font("D\u0069alog", Font.BOLD, 12), JBColor.RED),
                             dialogPane.getBorder()));
             dialogPane.addPropertyChangeListener(e -> {
                 if ("\u0062order".equals(e.getPropertyName())) {
@@ -137,9 +133,14 @@ public class IACConfigCheckerSettingForm extends JFrame {
                     okButton.setText("OK");
                     operate.add(okButton, "cell 0 0,alignx center,growx 0");
                     okButton.addActionListener(e -> {
-                        String text = input_config_path.getText();
-                        ConfigUtil.save(SettingKey.SETTING_CONFIG_KEY, text);
-                        NotificationUtil.info(text);
+                        String configPath = input_config_path.getText();
+                        String envConfig = input_env_config.getText();
+                        String encPath = input_enc_path.getText();
+                        String modelPatlText = input_model_patl.getText();
+                        if (StringUtil.isEmpty(configPath) || StringUtil.isEmpty(envConfig)
+                                || StringUtil.isEmpty(encPath) || StringUtil.isEmpty(modelPatlText)) {
+                            MessageUtil.error("Config cant be empty", "Config Error");
+                        }
                     });
                     //---- cancelButton ----
                     cancelButton.setText("Cancel");
